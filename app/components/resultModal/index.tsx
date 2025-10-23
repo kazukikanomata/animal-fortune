@@ -13,7 +13,7 @@ export const ResultModal = ({
   onReset,
 }: ResultModalProps) => {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl text-center">
         <div className="text-6xl mb-4">🎉</div>
         <div className="text-2xl font-bold mb-4 text-blue-600">

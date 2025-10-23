@@ -6,6 +6,7 @@ type Props = {
   answers: Record<string, string>;
   onAnswerChange: (questionId: string, value: string) => void;
   onComplete: () => void;
+  resetTrigger?: number;
 };
 
 export const StepQuestionForm = ({
@@ -13,9 +14,14 @@ export const StepQuestionForm = ({
   answers,
   onAnswerChange,
   onComplete,
+  resetTrigger = 0,
 }: Props) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    setCurrentStep(0);
+  }, [resetTrigger]);
 
   // 回答時に自動で次の質問に遷移
   const handleAnswerChange = (questionId: string, value: string) => {

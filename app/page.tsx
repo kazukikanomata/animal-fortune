@@ -6,13 +6,18 @@ import { useAnswers } from "./hooks/useAnswers";
 import { useFortuneLogic } from "./hooks/useFortuneLogic";
 import { ResultModal } from "./components/resultModal";
 import { NicknameModal } from "./components/nicknameModal";
+import { useState } from "react";
 
 export default function Home() {
   const { nickname, setNickname, showNicknameModal, closeNicknameModal } =
     useNicknameModal();
 
   const { answers, resetAnswers } = useAnswers();
-  const { result, resetResult } = useFortuneLogic(nickname, answers);
+  const [resetCounter, setResetCounter] = useState(0);
+  const { result, resetResult, isLoading, handleSubmit } = useFortuneLogic(
+    nickname,
+    answers
+  );
 
   /** 機能：もう一度占うボタン
    * ニックネームは保持し、toastやモーダル表示をSKIPして入力に専念させる。
@@ -21,6 +26,7 @@ export default function Home() {
   const handleReset = () => {
     resetAnswers();
     resetResult();
+    setResetCounter((prev) => prev + 1);
   };
 
   if (showNicknameModal) {
@@ -32,11 +38,15 @@ export default function Home() {
       />
     );
   }
-  console.log("Current Result State:", result);
 
   return (
     <>
-      <MainScreen nickname={nickname} />
+      <MainScreen
+        isLoading={isLoading}
+        result={result}
+        onComplete={handleSubmit}
+        resetTrigger={resetCounter}
+      />
       {result?.success && (
         <ResultModal
           nickname={nickname}
