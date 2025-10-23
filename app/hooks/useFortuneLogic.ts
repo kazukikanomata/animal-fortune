@@ -6,7 +6,7 @@ import { GAS_API_URL } from "../config";
 // TODO: 型定義見直す
 export type FortuneResult = {
   success: boolean;
-  url?: string;
+  resultUrl?: string;
   animalType?: string;
   error?: string;
 };
