@@ -19,13 +19,6 @@ export const MainScreen = ({
   const { answers, handleAnswerChange } = useAnswers();
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
-      <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 shadow-lg">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl font-bold mb-2">みにしみ動物占い🔮</h1>
-          <p className="text-blue-100">あなたの性格を12の質問で診断します</p>
-        </div>
-      </header>
-
       <main className="py-8">
         <StepQuestionForm
           questions={questions}
