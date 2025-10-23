@@ -1,14 +1,22 @@
 import { questions } from "@/app/types/questions";
 import { useAnswers } from "@/app/hooks/useAnswers";
-import { useFortuneLogic } from "@/app/hooks/useFortuneLogic";
 import { StepQuestionForm } from "../stepQuestionForm";
+import { FortuneResult } from "@/app/hooks/useFortuneLogic";
 
-export const MainScreen = ({ nickname }: { nickname: string }) => {
+type MainScreenProps = {
+  isLoading: boolean;
+  result: FortuneResult | null;
+  resetTrigger?: number;
+  onComplete: () => void;
+};
+
+export const MainScreen = ({
+  isLoading,
+  result,
+  onComplete,
+  resetTrigger,
+}: MainScreenProps) => {
   const { answers, handleAnswerChange } = useAnswers();
-  const { isLoading, result, handleSubmit } = useFortuneLogic(
-    nickname,
-    answers
-  );
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 shadow-lg">
@@ -23,11 +31,12 @@ export const MainScreen = ({ nickname }: { nickname: string }) => {
           questions={questions}
           answers={answers}
           onAnswerChange={handleAnswerChange}
-          onComplete={handleSubmit}
+          onComplete={onComplete}
+          resetTrigger={resetTrigger}
         />
 
         {isLoading && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-xl p-8 text-center shadow-2xl">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
               <p className="text-lg font-medium text-gray-700">占い中...</p>
