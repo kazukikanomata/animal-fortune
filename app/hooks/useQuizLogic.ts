@@ -1,6 +1,6 @@
 "use client";
 
-import { questions } from "app/types/questions";
+import { questions } from "../types/questions";
 import { useCallback, useMemo, useState } from "react";
 
 type QuizResult = {
