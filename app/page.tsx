@@ -4,7 +4,7 @@ import { MainScreen } from "./components/mainScreen";
 import { useNicknameModal } from "./hooks/useNicknameModal";
 import { useAnswers } from "./hooks/useAnswers";
 import { useFortuneLogic } from "./hooks/useFortuneLogic";
-import { ResultScreen } from "./components/resultScreen";
+import { ResultModal } from "./components/resultModal";
 import { NicknameModal } from "./components/nicknameModal";
 
 export default function Home() {
@@ -32,16 +32,18 @@ export default function Home() {
       />
     );
   }
-
-  if (result?.success) {
-    return (
-      <ResultScreen nickname={nickname} result={result} onReset={handleReset} />
-    );
-  }
+  console.log("Current Result State:", result);
 
   return (
     <>
       <MainScreen nickname={nickname} />
+      {result?.success && (
+        <ResultModal
+          nickname={nickname}
+          result={result}
+          onReset={handleReset}
+        />
+      )}
     </>
   );
 }
