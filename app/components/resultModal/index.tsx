@@ -25,38 +25,47 @@ const getAnimalTypeName = (animalType: FortuneResult["animalType"]): string => {
  * 外部リンクアイコンコンポーネント
  */
 const ExternalLinkIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={1.5}
-    stroke="currentColor"
-    className="size-6"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-    />
-  </svg>
+  <div className="mr-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="size-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+      />
+    </svg>
+  </div>
 );
 
 /**
  * 診断結果のURLを表示するサブコンポーネント
  */
 
-const ResultLink = ({ resultUrl }: { resultUrl: string }) => (
+const ResultButton = ({ resultUrl }: { resultUrl: string }) => (
+  // ボタンにしたい
   <div className="mb-6">
-    <p className="text-gray-600 mb-2">{RESULT_LINK_TEXT}</p>
+    {/* 診断結果はこちら */}
     <div className="flex justify-center">
       <a
         href={resultUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-blue-500 hover:text-blue-700 underline flex items-center"
+        className="flex items-center justify-center 
+          bg-green-500 text-white 
+          px-6 py-3 rounded-xl 
+          hover:bg-green-600 
+          shadow-md transition-colors 
+          text-decoration-none
+          w-full sm:w-auto"
       >
         <ExternalLinkIcon />
-        <span className="break-all max-w-full">{resultUrl}</span>
+        <span className="break-all">{RESULT_LINK_TEXT}</span>
       </a>
     </div>
   </div>
@@ -74,17 +83,15 @@ const ModalContent = ({ nickname, result, onReset }: ResultModalProps) => {
           height={400}
         />
       </div>
-      {/* TODO: textの色を編集する */}
-      <div className="text-2xl font-bold mb-4 text-blue-600">
+      <div className="text-xl font-bold mb-6 text-black">
         \ {nickname}さんは
-        <strong>{animalTypeName}</strong>
+        <span className="text-red-400">{animalTypeName}</span>
         です！！/
       </div>
-      {result.resultUrl && <ResultLink resultUrl={result.resultUrl} />}
-      {/* TODO: bg-colorと文字色を編集する */}
+      {result.resultUrl && <ResultButton resultUrl={result.resultUrl} />}
       <button
         onClick={onReset}
-        className="btn-wide bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600"
+        className="bg-transparent text-gray-500 underline pb-2 hover:bg-gray-200"
       >
         {RESET_BUTTON_TEXT}
       </button>

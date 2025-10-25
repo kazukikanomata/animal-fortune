@@ -97,7 +97,7 @@ export const StepQuestionForm = ({
       >
         <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8 mb-6">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-full text-lg font-bold mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-neutral-100 text-gray-600 rounded-full text-lg font-bold mb-4">
               {currentStep + 1}
             </div>
             <h2 className="text-xl font-bold text-gray-800 leading-relaxed">
@@ -124,7 +124,7 @@ export const StepQuestionForm = ({
                     onChange={() =>
                       handleAnswerChange(currentQuestion.id, option.value)
                     }
-                    className="radio radio-primary mt-1 mr-4 flex-shrink-0"
+                    className="radio radio-neutral mt-1 mr-4 flex-shrink-0"
                   />
                   <span className="text-gray-700 text-base leading-relaxed">
                     {option.text}
@@ -162,7 +162,7 @@ export const StepQuestionForm = ({
         <button
           onClick={goToPrevious}
           disabled={currentStep === 0}
-          className={`px-4 py-3 rounded-lg font-normal transition-all duration-200 flex items-center justify-center ${
+          className={`px-4 py-3 rounded-lg text-sm font-normal transition-all duration-200 flex items-center justify-center ${
             currentStep === 0
               ? "bg-gray-100 text-gray-400 cursor-not-allowed"
               : "bg-gray-200 text-gray-700 hover:bg-gray-300 hover:shadow-md"
@@ -194,7 +194,7 @@ export const StepQuestionForm = ({
           disabled={
             !answers[currentQuestion.id] || currentStep === questions.length - 1
           }
-          className={`px-4 py-3 rounded-lg font-normal transition-all duration-200 flex items-center justify-center ${
+          className={`px-4 py-3 rounded-lg text-sm font-normal transition-all duration-200 flex items-center justify-center ${
             !answers[currentQuestion.id] || currentStep === questions.length - 1
               ? "bg-gray-100 text-gray-400 cursor-not-allowed"
               : "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-md"
