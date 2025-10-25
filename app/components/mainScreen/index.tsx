@@ -2,6 +2,7 @@ import { questions } from "@/app/types/questions";
 import { useAnswers } from "@/app/hooks/useAnswers";
 import { StepQuestionForm } from "../stepQuestionForm";
 import { FortuneResult } from "@/app/hooks/useFortuneLogic";
+import Image from "next/image";
 
 type MainScreenProps = {
   isLoading: boolean;
@@ -31,7 +32,14 @@ export const MainScreen = ({
         {isLoading && (
           <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-xl p-8 text-center shadow-2xl">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4">
+                <Image
+                  width={150}
+                  height={200}
+                  src="/awaawa.png"
+                  alt="みにしみローディング"
+                />
+              </div>
               <p className="text-lg font-medium text-gray-700">占い中...</p>
               <p className="text-sm text-gray-500 mt-2">
                 しばらくお待ちください

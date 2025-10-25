@@ -97,7 +97,7 @@ export const StepQuestionForm = ({
       >
         <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8 mb-6">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-full text-lg font-bold mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-neutral-100 text-gray-600 rounded-full text-lg font-bold mb-4">
               {currentStep + 1}
             </div>
             <h2 className="text-xl font-bold text-gray-800 leading-relaxed">
@@ -124,7 +124,7 @@ export const StepQuestionForm = ({
                     onChange={() =>
                       handleAnswerChange(currentQuestion.id, option.value)
                     }
-                    className="radio radio-primary mt-1 mr-4 flex-shrink-0"
+                    className="radio radio-neutral mt-1 mr-4 flex-shrink-0"
                   />
                   <span className="text-gray-700 text-base leading-relaxed">
                     {option.text}
