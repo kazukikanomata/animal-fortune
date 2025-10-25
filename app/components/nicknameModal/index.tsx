@@ -8,7 +8,7 @@ export const NicknameModal = ({
   onClose: () => void;
 }) => {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
         <div className="mt-4 text-center">
           <h2 className="text-2xl m-4 text-neutral">ニックネームを入力</h2>

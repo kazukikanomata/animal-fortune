@@ -19,7 +19,7 @@ export const MainScreen = ({
 }: MainScreenProps) => {
   const { answers, handleAnswerChange } = useAnswers();
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+    <div className="">
       <main className="py-8">
         <StepQuestionForm
           questions={questions}

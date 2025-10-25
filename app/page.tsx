@@ -31,24 +31,40 @@ export default function Home() {
 
   if (showNicknameModal) {
     return (
-      <NicknameModal
-        nickname={nickname}
-        setNickname={setNickname}
-        onClose={closeNicknameModal}
-      />
+      <div
+        className=" 
+        p-4
+
+        flex 
+        flex-col 
+        items-center"
+        style={{
+          backgroundImage: "url('/images/pastel.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <NicknameModal
+          nickname={nickname}
+          setNickname={setNickname}
+          onClose={closeNicknameModal}
+        />
+      </div>
     );
   }
 
   return (
     <div
-      className="bg-main bg-cover 
-        bg-center 
-        min-h-screen 
-        p-4 
-        relative 
+      className=" 
+        p-4
         flex 
         flex-col 
         items-center"
+      style={{
+        backgroundImage: "url('/images/pastel.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
       <MainScreen
         isLoading={isLoading}
