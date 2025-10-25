@@ -24,9 +24,13 @@ const Toaster = ({ ...props }: ToasterProps) => {
       visibleToasts={5}
       className="toaster group"
       toastOptions={{
+        style: {
+          minHeight: "60px",
+          padding: "12px 16px",
+        },
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-white group-[.toaster]:text-gray-800 group-[.toaster]:border group-[.toaster]:border-gray-200 group-[.toaster]:shadow-lg group-[.toaster]:rounded-lg group-[.toaster]:px-4 group-[.toaster]:py-3 group-[.toaster]:flex group-[.toaster]:items-center group-[.toaster]:justify-center group-[.toaster]:text-center group-[.toaster]:text-base group-[.toaster]:font-medium",
+            "group toast group-[.toaster]:bg-white group-[.toaster]:text-gray-800 group-[.toaster]:border group-[.toaster]:border-gray-200 group-[.toaster]:shadow-lg group-[.toaster]:rounded-lg group-[.toaster]:px-4 group-[.toaster]:py-5 group-[.toaster]:flex group-[.toaster]:items-center group-[.toaster]:justify-center group-[.toaster]:text-center group-[.toaster]:text-base group-[.toaster]:font-medium",
           description:
             "group-[.toast]:text-gray-600 group-[.toast]:text-center group-[.toast]:text-base",
         },
