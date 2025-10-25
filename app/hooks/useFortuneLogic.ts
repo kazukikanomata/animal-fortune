@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 import { questions } from "../types/questions";
-import { GAS_API_URL } from "../config";
+import { AnimalType, GAS_API_URL } from "../config";
 
 // TODO: 型定義見直す
 export type FortuneResult = {
   success: boolean;
   resultUrl?: string;
-  animalType?: string;
+  animalType?: AnimalType;
   error?: string;
 };
 
@@ -23,7 +23,7 @@ export const useFortuneLogic = (
     // 全ての質問に回答しているかチェック
 
     setIsLoading(true);
-    setResult(null); // TODO: これいらん？
+    setResult(null);
     try {
       console.log("Frontend: Sending request to:", GAS_API_URL);
       const requestBody = {
@@ -65,6 +65,7 @@ export const useFortuneLogic = (
       }
 
       const data = await response.json();
+      console.log("FrontAPI :" + data);
       setResult(data);
     } catch (error) {
       setResult({
