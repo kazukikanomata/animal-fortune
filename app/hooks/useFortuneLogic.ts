@@ -1,13 +1,11 @@
 import { useState } from "react";
-
 import { questions } from "../types/questions";
-import { GAS_API_URL } from "../config";
+import { AnimalType } from "../config";
 
-// TODO: 型定義見直す
 export type FortuneResult = {
   success: boolean;
   resultUrl?: string;
-  animalType?: string;
+  animalType?: AnimalType;
   error?: string;
 };
 
@@ -23,9 +21,8 @@ export const useFortuneLogic = (
     // 全ての質問に回答しているかチェック
 
     setIsLoading(true);
-    setResult(null); // TODO: これいらん？
+    setResult(null);
     try {
-      console.log("Frontend: Sending request to:", GAS_API_URL);
       const requestBody = {
         nickname,
         ...Object.fromEntries(
@@ -41,7 +38,6 @@ export const useFortuneLogic = (
           ])
         ),
       };
-      console.log("Frontend: Request body:", requestBody);
 
       const response = await fetch("/api/fortune", {
         method: "POST",
@@ -50,9 +46,6 @@ export const useFortuneLogic = (
         },
         body: JSON.stringify(requestBody),
       });
-
-      console.log("Frontend: Response status:", response.status);
-      console.log("Frontend: Response headers:", response.headers);
 
       if (!response.ok) {
         const errorText = await response.text();

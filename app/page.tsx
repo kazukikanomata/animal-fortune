@@ -12,7 +12,7 @@ export default function Home() {
   const { nickname, setNickname, showNicknameModal, closeNicknameModal } =
     useNicknameModal();
 
-  const { answers, resetAnswers } = useAnswers();
+  const { answers, handleAnswerChange, resetAnswers } = useAnswers();
   const [resetCounter, setResetCounter] = useState(0);
   const { result, resetResult, isLoading, handleSubmit } = useFortuneLogic(
     nickname,
@@ -70,6 +70,8 @@ export default function Home() {
         result={result}
         onComplete={handleSubmit}
         resetTrigger={resetCounter}
+        answers={answers}
+        onAnswerChange={handleAnswerChange}
       />
       {result?.success && (
         <ResultModal

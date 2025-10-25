@@ -1,5 +1,4 @@
 import { questions } from "@/app/types/questions";
-import { useAnswers } from "@/app/hooks/useAnswers";
 import { StepQuestionForm } from "../stepQuestionForm";
 import { FortuneResult } from "@/app/hooks/useFortuneLogic";
 import Image from "next/image";
@@ -9,6 +8,8 @@ type MainScreenProps = {
   result: FortuneResult | null;
   resetTrigger?: number;
   onComplete: () => void;
+  answers: Record<string, string>;
+  onAnswerChange: (questionId: string, value: string) => void;
 };
 
 export const MainScreen = ({
@@ -16,15 +17,16 @@ export const MainScreen = ({
   result,
   onComplete,
   resetTrigger,
+  answers,
+  onAnswerChange,
 }: MainScreenProps) => {
-  const { answers, handleAnswerChange } = useAnswers();
   return (
     <div className="">
       <main className="py-8">
         <StepQuestionForm
           questions={questions}
           answers={answers}
-          onAnswerChange={handleAnswerChange}
+          onAnswerChange={onAnswerChange}
           onComplete={onComplete}
           resetTrigger={resetTrigger}
         />
