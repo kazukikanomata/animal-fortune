@@ -162,7 +162,7 @@ export const StepQuestionForm = ({
         <button
           onClick={goToPrevious}
           disabled={currentStep === 0}
-          className={`px-4 py-3 rounded-lg font-normal transition-all duration-200 flex items-center justify-center ${
+          className={`px-4 py-3 rounded-lg text-sm font-normal transition-all duration-200 flex items-center justify-center ${
             currentStep === 0
               ? "bg-gray-100 text-gray-400 cursor-not-allowed"
               : "bg-gray-200 text-gray-700 hover:bg-gray-300 hover:shadow-md"
@@ -194,7 +194,7 @@ export const StepQuestionForm = ({
           disabled={
             !answers[currentQuestion.id] || currentStep === questions.length - 1
           }
-          className={`px-4 py-3 rounded-lg font-normal transition-all duration-200 flex items-center justify-center ${
+          className={`px-4 py-3 rounded-lg text-sm font-normal transition-all duration-200 flex items-center justify-center ${
             !answers[currentQuestion.id] || currentStep === questions.length - 1
               ? "bg-gray-100 text-gray-400 cursor-not-allowed"
               : "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-md"
