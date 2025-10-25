@@ -24,7 +24,7 @@ export const NicknameModal = ({
         <button
           onClick={onClose}
           disabled={!nickname}
-          className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed"
+          className="w-full bg-cyan-500 text-white py-3 rounded-lg hover:bg-cyan-400 disabled:bg-gray-300 disabled:cursor-not-allowed"
         >
           決定
         </button>

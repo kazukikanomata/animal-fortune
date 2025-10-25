@@ -21,10 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={ZenKakuGothicNewFont.className}>
-        <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 shadow-lg">
+        <header className="sticky top-0 z-50 bg-gradient-to-r from-[#EAD6EE] to-[#A0F1EA] text-white p-3 shadow-lg">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-2xl font-bold mb-1">みにしみ動物占い🔮</h1>
-            <p className="text-blue-100">~あなたの性格を12の質問で診断~</p>
+            <h1 className="text-gray-600 text-2xl font-bold mb-1">
+              みにしみ動物占い🔮
+            </h1>
+            <p className="text-gray-500">~あなたの性格を12の質問で診断~</p>
           </div>
         </header>
         {children}

@@ -87,27 +87,6 @@ export const StepQuestionForm = ({
 
   return (
     <div className="max-w-3xl mx-auto px-4">
-      {/* 進捗バー */}
-      <div className="mb-8">
-        <div className="flex justify-between items-center text-sm text-gray-600 mb-3">
-          <span className="font-medium">
-            質問 {currentStep + 1} / {questions.length}
-          </span>
-          <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
-            {answeredCount}問回答済み
-          </span>
-        </div>
-        <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-          <div
-            className="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full transition-all duration-500 ease-out"
-            style={{ width: `${progressPercentage}%` }}
-          />
-        </div>
-        <div className="text-center mt-2 text-sm text-gray-500">
-          {Math.round(progressPercentage)}% 完了
-        </div>
-      </div>
-
       {/* 質問カード */}
       <div
         className={`transition-all duration-300 ${
@@ -157,6 +136,27 @@ export const StepQuestionForm = ({
         </div>
       </div>
 
+      {/* 進捗バー */}
+      <div className="mb-8">
+        <div className="flex justify-between items-center text-sm text-gray-600 mb-3">
+          <span className="font-medium">
+            質問 {currentStep + 1} / {questions.length}
+          </span>
+          <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+            {answeredCount}問回答済み
+          </span>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+          <div
+            className="bg-gray-600 h-3 rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${progressPercentage}%` }}
+          />
+        </div>
+        <div className="text-center mt-2 text-sm text-gray-500">
+          {Math.round(progressPercentage)}% 完了
+        </div>
+      </div>
+
       {/* ナビゲーションボタン */}
       <div className="flex justify-between items-center">
         <button
@@ -183,24 +183,12 @@ export const StepQuestionForm = ({
           className={`px-6 py-3 rounded-lg font-normal transition-all duration-200 ${
             !answers[currentQuestion.id] || currentStep === questions.length - 1
               ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-              : "bg-blue-500 text-white hover:bg-blue-600 hover:shadow-md"
+              : "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-md"
           }`}
         >
           次の質問 →
         </button>
       </div>
-
-      {/* 完了ボタン（最後の質問で回答済みの場合） */}
-      {currentStep === questions.length - 1 && answers[currentQuestion.id] && (
-        <div className="text-center mt-8">
-          <button
-            onClick={onComplete}
-            className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-green-600 hover:to-blue-600 hover:shadow-lg transition-all duration-200"
-          >
-            🎉 診断を完了する
-          </button>
-        </div>
-      )}
     </div>
   );
 };
