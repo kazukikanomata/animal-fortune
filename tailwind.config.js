@@ -9,6 +9,10 @@ module.exports = {
       backgroundImage: {
         'main': "url('/images/image.svg')",
       },
+      maxWidth: {
+        'form': '600px', // フォーム用の統一幅
+        'form-wide': '800px', // より広いフォーム用（必要に応じて）
+      },
     },
   },
   plugins: [],

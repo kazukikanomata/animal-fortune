@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@theme {
+  --background-image-main: url('/images/image.svg');
+  --max-width-form: 600px;
+  --max-width-form-wide: 800px;
+}

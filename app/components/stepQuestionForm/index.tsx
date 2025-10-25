@@ -86,7 +86,7 @@ export const StepQuestionForm = ({
   const answeredCount = Object.keys(answers).length;
 
   return (
-    <div className="max-w-3xl mx-auto px-4">
+    <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* 質問カード */}
       <div
         className={`transition-all duration-300 ${
@@ -95,7 +95,7 @@ export const StepQuestionForm = ({
             : "opacity-100 transform translate-x-0"
         }`}
       >
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8 mb-6">
+        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-4 sm:p-6 md:p-8 mb-6 w-full">
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-neutral-100 text-gray-600 rounded-full text-lg font-bold mb-4">
               {currentStep + 1}
@@ -105,7 +105,7 @@ export const StepQuestionForm = ({
             </h2>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 max-w-full">
             {currentQuestion.options.map((option) => (
               <label
                 key={option.value}
