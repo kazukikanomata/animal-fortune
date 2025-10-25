@@ -162,13 +162,27 @@ export const StepQuestionForm = ({
         <button
           onClick={goToPrevious}
           disabled={currentStep === 0}
-          className={`px-6 py-3 rounded-lg font-normal transition-all duration-200 ${
+          className={`px-4 py-3 rounded-lg font-normal transition-all duration-200 flex items-center justify-center ${
             currentStep === 0
               ? "bg-gray-100 text-gray-400 cursor-not-allowed"
               : "bg-gray-200 text-gray-700 hover:bg-gray-300 hover:shadow-md"
           }`}
         >
-          ← 前の質問
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
+          前の質問
         </button>
 
         <div className="text-sm text-gray-500">
@@ -180,13 +194,27 @@ export const StepQuestionForm = ({
           disabled={
             !answers[currentQuestion.id] || currentStep === questions.length - 1
           }
-          className={`px-6 py-3 rounded-lg font-normal transition-all duration-200 ${
+          className={`px-4 py-3 rounded-lg font-normal transition-all duration-200 flex items-center justify-center ${
             !answers[currentQuestion.id] || currentStep === questions.length - 1
               ? "bg-gray-100 text-gray-400 cursor-not-allowed"
               : "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-md"
           }`}
         >
-          次の質問 →
+          次の質問
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+            />
+          </svg>
         </button>
       </div>
     </div>
