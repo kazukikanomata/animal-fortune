@@ -10,9 +10,10 @@ export const NicknameModal = ({
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-        <h2 className="text-neutral text-xl font-bold mb-4 text-center">
-          ニックネームを入力してください
-        </h2>
+        <div className="mt-4 text-center">
+          <h2 className="text-2xl m-4 text-neutral">ニックネームを入力</h2>
+        </div>
+
         <input
           type="text"
           value={nickname}
@@ -26,7 +27,7 @@ export const NicknameModal = ({
           disabled={!nickname}
           className="w-full bg-cyan-500 text-white py-3 rounded-lg hover:bg-cyan-400 disabled:bg-gray-300 disabled:cursor-not-allowed"
         >
-          決定
+          始める
         </button>
       </div>
     </div>

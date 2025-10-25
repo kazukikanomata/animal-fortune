@@ -40,7 +40,16 @@ export default function Home() {
   }
 
   return (
-    <>
+    <div
+      className="bg-main bg-cover 
+        bg-center 
+        min-h-screen 
+        p-4 
+        relative 
+        flex 
+        flex-col 
+        items-center"
+    >
       <MainScreen
         isLoading={isLoading}
         result={result}
@@ -54,6 +63,6 @@ export default function Home() {
           onReset={handleReset}
         />
       )}
-    </>
+    </div>
   );
 }
