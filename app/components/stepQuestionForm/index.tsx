@@ -1,7 +1,7 @@
 import { Question } from "@/app/types/questions";
 import { useState, useEffect, useCallback } from "react";
 
-type Props = {
+type StepQuestionFormProps = {
   questions: Question[];
   answers: Record<string, string>;
   onAnswerChange: (questionId: string, value: string) => void;
@@ -15,7 +15,7 @@ export const StepQuestionForm = ({
   onAnswerChange,
   onComplete,
   resetTrigger = 0,
-}: Props) => {
+}: StepQuestionFormProps) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -41,7 +41,6 @@ export const StepQuestionForm = ({
     }, 300);
   };
 
-  // 前の質問に戻る
   const goToPrevious = useCallback(() => {
     if (currentStep > 0) {
       setIsTransitioning(true);
@@ -52,7 +51,6 @@ export const StepQuestionForm = ({
     }
   }, [currentStep]);
 
-  // 次の質問に進む（回答済みの場合のみ）
   const goToNext = useCallback(() => {
     const currentQuestion = questions[currentStep];
     if (answers[currentQuestion.id] && currentStep < questions.length - 1) {
@@ -64,7 +62,6 @@ export const StepQuestionForm = ({
     }
   }, [answers, currentStep, questions]);
 
-  // キーボードナビゲーション
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft" && currentStep > 0) {
@@ -87,7 +84,6 @@ export const StepQuestionForm = ({
 
   return (
     <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* 質問カード */}
       <div
         className={`transition-all duration-300 ${
           isTransitioning
@@ -133,8 +129,7 @@ export const StepQuestionForm = ({
               </label>
             ))}
           </div>
-          {/* ここにたしていいんじゃね */}
-          {/* 進捗バー */}
+
           <div className="mb-8 mt-4">
             <div className="flex justify-between items-center text-sm text-gray-600 mb-3">
               <span className="font-medium">
@@ -155,7 +150,6 @@ export const StepQuestionForm = ({
             </div>
           </div>
 
-          {/* ナビゲーションボタン */}
           <div className="flex justify-between items-center">
             <button
               onClick={goToPrevious}
@@ -182,10 +176,6 @@ export const StepQuestionForm = ({
               </svg>
               前の質問
             </button>
-
-            <div className="text-sm text-gray-500">
-              {currentStep > 0 && <span>← 矢印キーでナビゲーション</span>}
-            </div>
 
             <button
               onClick={goToNext}
