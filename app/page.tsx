@@ -1,12 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { MainScreen } from "./components/mainScreen";
-import { useNicknameModal } from "./hooks/useNicknameModal";
+import { NicknameModal } from "./components/nicknameModal";
+import { ResultModal } from "./components/resultModal";
 import { useAnswers } from "./hooks/useAnswers";
 import { useFortuneLogic } from "./hooks/useFortuneLogic";
-import { ResultModal } from "./components/resultModal";
-import { NicknameModal } from "./components/nicknameModal";
-import { useState } from "react";
+import { useNicknameModal } from "./hooks/useNicknameModal";
 
 export default function Home() {
   const { nickname, setNickname, showNicknameModal, closeNicknameModal } =
@@ -40,7 +40,7 @@ export default function Home() {
         style={{
           backgroundImage: "url('/images/pastel.svg')",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          // backgroundPosition: "center",
         }}
       >
         <NicknameModal
@@ -62,7 +62,7 @@ export default function Home() {
       style={{
         backgroundImage: "url('/images/pastel.svg')",
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        // backgroundPosition: "center",
       }}
     >
       <MainScreen
