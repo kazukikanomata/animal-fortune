@@ -2,6 +2,7 @@ import { FortuneResult } from "@/app/hooks/useFortuneLogic";
 import { questions } from "@/app/types/questions";
 import Image from "next/image";
 import { StepQuestionForm } from "../stepQuestionForm";
+import { useEffect } from "react";
 
 type MainScreenProps = {
   isLoading: boolean;
@@ -20,15 +21,31 @@ export const MainScreen = ({
   answers,
   onAnswerChange,
 }: MainScreenProps) => {
+  const totalQuestions = questions.length;
+
+  useEffect(() => {
+    const answeredCount = Object.keys(answers).length;
+
+    if (
+      answeredCount === totalQuestions &&
+      answeredCount > 0 &&
+      !result &&
+      !isLoading
+    ) {
+      onComplete();
+    }
+  }, [answers, totalQuestions, result, isLoading, onComplete]);
+
   return (
-    <main className="py-8">
-      <StepQuestionForm
-        questions={questions}
-        answers={answers}
-        onAnswerChange={onAnswerChange}
-        onComplete={onComplete}
-        resetTrigger={resetTrigger}
-      />
+    
+      <main className="py-8">
+        <StepQuestionForm
+          questions={questions}
+          answers={answers}
+          onAnswerChange={onAnswerChange}
+          onComplete={onComplete}
+          resetTrigger={resetTrigger}
+        />
 
       {isLoading && (
         <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50">

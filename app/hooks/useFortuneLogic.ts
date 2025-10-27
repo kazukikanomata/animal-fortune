@@ -47,6 +47,7 @@ export const useFortuneLogic = (
         body: JSON.stringify(requestBody),
       });
 
+      console.log(JSON.stringify(requestBody));
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Frontend: Response error:", errorText);
@@ -58,6 +59,8 @@ export const useFortuneLogic = (
       }
 
       const data = await response.json();
+      console.log(JSON.stringify(data));
+
       setResult(data);
     } catch (error) {
       setResult({
