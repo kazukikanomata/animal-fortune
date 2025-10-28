@@ -33,9 +33,6 @@ export const StepQuestionForm = ({
     setTimeout(() => {
       if (currentStep < questions.length - 1) {
         setCurrentStep((prev) => prev + 1);
-      } else {
-        // 最後の質問の場合は完了処理
-        onComplete();
       }
       setIsTransitioning(false);
     }, 300);
