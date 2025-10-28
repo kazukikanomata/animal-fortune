@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { questions } from "../types/questions";
 import { AnimalType } from "../config";
+import { questions } from "../types/questions";
 
 export type FortuneResult = {
   success: boolean;
@@ -17,8 +17,19 @@ export const useFortuneLogic = (
   const [result, setResult] = useState<FortuneResult | null>(null);
 
   const handleSubmit = async () => {
-    // TODO: ニックネーム入力チェック
-    // 全ての質問に回答しているかチェック
+    if (!nickname.trim()) {
+      setResult({
+        success: false,
+        error: "ニックネームを入力してください",
+      });
+    }
+
+    if (Object.keys(answers).length !== questions.length) {
+      setResult({
+        success: false,
+        error: "すべての質問に回答してください",
+      });
+    }
 
     setIsLoading(true);
     setResult(null);
@@ -46,8 +57,6 @@ export const useFortuneLogic = (
         },
         body: JSON.stringify(requestBody),
       });
-
-      console.log(JSON.stringify(requestBody));
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Frontend: Response error:", errorText);
@@ -62,6 +71,29 @@ export const useFortuneLogic = (
       console.log(JSON.stringify(data));
 
       setResult(data);
+
+      // 成功しているときかつ動物タイプがあるときのみjsonの保存する処理を実行する
+      if (data.success && data.animalType) {
+
+        const submissionRequestBody = {
+          nickname,
+          animalType: data.animalType,
+          answers: requestBody,
+        };
+
+        try {
+          await fetch("/api/submission", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(submissionRequestBody),
+          });
+        } catch (submissionError) {
+          console.error("Failed to save submission API:", submissionError);
+        }
+      }
+
     } catch (error) {
       setResult({
         success: false,
