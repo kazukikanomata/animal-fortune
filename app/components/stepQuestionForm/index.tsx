@@ -93,12 +93,23 @@ export const StepQuestionForm = ({
       >
         <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-4 sm:p-6 md:p-8 mb-6 w-full">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-neutral-100 text-gray-600 rounded-full text-lg font-bold mb-4">
-              {currentStep + 1}
+            {/* tailwind */}
+            <div
+              className="inline-flex items-center text-lg mb-2 radial-progress text-primary"
+              style={
+                {
+                  "--value": progressPercentage,
+                } /* as React.CSSProperties */
+              }
+              aria-valuenow={progressPercentage}
+              role="progressbar"
+            >
+              {currentStep + 1}/{questions.length}
             </div>
-            <h2 className="text-xl font-bold text-gray-800 leading-relaxed">
+
+            <h3 className="text-base font-bold text-gray-800 leading-relaxed">
               {currentQuestion.title}
-            </h2>
+            </h3>
           </div>
 
           <div className="space-y-4 max-w-full">
@@ -120,93 +131,72 @@ export const StepQuestionForm = ({
                     onChange={() =>
                       handleAnswerChange(currentQuestion.id, option.value)
                     }
-                    className="radio radio-neutral mt-1 mr-4 flex-shrink-0"
+                    className="radio radio-neutral mr-2 flex-shrink-0"
                   />
-                  <span className="text-gray-700 text-base leading-relaxed">
+                  <span className="text-gray-700 text-sm leading-relaxed">
                     {option.text}
                   </span>
                 </div>
               </label>
             ))}
           </div>
-
-          <div className="mb-8 mt-4">
-            <div className="flex justify-between items-center text-sm text-gray-600 mb-3">
-              <span className="font-medium">
-                質問 {currentStep + 1} / {questions.length}
-              </span>
-              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
-                {answeredCount}問回答済み
-              </span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-              <div
-                className="bg-gray-600 h-3 rounded-full transition-all duration-500 ease-out"
-                style={{ width: `${progressPercentage}%` }}
+        </div>
+        <div className="flex justify-between items-center">
+          <button
+            onClick={goToPrevious}
+            disabled={currentStep === 0}
+            className={`px-4 py-3 rounded-lg text-sm font-normal transition-all duration-200 flex items-center justify-center ${
+              currentStep === 0
+                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300 hover:shadow-md"
+            }`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5 8.25 12l7.5-7.5"
               />
-            </div>
-            <div className="text-center mt-2 text-sm text-gray-500">
-              {Math.round(progressPercentage)}% 完了
-            </div>
-          </div>
+            </svg>
+            前の質問
+          </button>
 
-          <div className="flex justify-between items-center">
-            <button
-              onClick={goToPrevious}
-              disabled={currentStep === 0}
-              className={`px-4 py-3 rounded-lg text-sm font-normal transition-all duration-200 flex items-center justify-center ${
-                currentStep === 0
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300 hover:shadow-md"
-              }`}
+          <button
+            onClick={goToNext}
+            disabled={
+              !answers[currentQuestion.id] ||
+              currentStep === questions.length - 1
+            }
+            className={`px-4 py-3 rounded-lg text-sm font-normal transition-all duration-200 flex items-center justify-center ${
+              !answers[currentQuestion.id] ||
+              currentStep === questions.length - 1
+                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                : "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-md"
+            }`}
+          >
+            次の質問
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-5"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5 8.25 12l7.5-7.5"
-                />
-              </svg>
-              前の質問
-            </button>
-
-            <button
-              onClick={goToNext}
-              disabled={
-                !answers[currentQuestion.id] ||
-                currentStep === questions.length - 1
-              }
-              className={`px-4 py-3 rounded-lg text-sm font-normal transition-all duration-200 flex items-center justify-center ${
-                !answers[currentQuestion.id] ||
-                currentStep === questions.length - 1
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-cyan-500 text-white hover:bg-cyan-600 hover:shadow-md"
-              }`}
-            >
-              次の質問
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </button>
-          </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
