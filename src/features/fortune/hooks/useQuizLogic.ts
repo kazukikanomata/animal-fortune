@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimalType } from "../../../config";
+import { AnimalType } from "../constants/animal-types";
 import { questions } from "../types/questions";
 import { useCallback, useMemo, useState } from "react";
 
@@ -22,7 +22,7 @@ export const useQuizLogic = () => {
     (questionId: string, value: string) => {
       setAnswers((prev) => ({ ...prev, [questionId]: value }));
     },
-    []
+    [],
   );
 
   const handleSubmit = useCallback(async () => {
@@ -45,7 +45,7 @@ export const useQuizLogic = () => {
                   .find((q) => q.id === key)
                   ?.options.find((o) => o.value === value)?.text || "",
             },
-          ])
+          ]),
         ),
       };
 
