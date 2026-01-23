@@ -27,27 +27,6 @@ nvm use
 npm ci
 ```
 
-### 4. 認証の設定
-
-※ 今回はプロジェクトでは使わない予定
-
-#### auth secret 作成
-
-以下のコマンドを実行して、secret を作成する
-
-```bash
-npx auth secret --copy
-```
-
-次の形式で出力される。
-AUTH_SECRET="xxxxxx"
-
-.env.local に出力された値を追加する
-
-```bash
-AUTH_SECRET="xxxxxxxxxxx"
-```
-
 ## コマンド
 
 #### 開発サーバーを起動（Next.js）
