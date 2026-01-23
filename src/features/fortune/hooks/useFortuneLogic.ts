@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { questions } from "../types/questions";
-import { AnimalType } from "../config";
+import { AnimalType } from "../constants/animal-types";
 
 export type FortuneResult = {
   success: boolean;

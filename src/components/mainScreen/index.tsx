@@ -1,7 +1,7 @@
-import { FortuneResult } from "@/app/hooks/useFortuneLogic";
-import { questions } from "@/app/types/questions";
+import { FortuneResult } from "@/features/fortune/hooks/useFortuneLogic";
+import { questions } from "@/features/fortune/types/questions";
 import Image from "next/image";
-import { StepQuestionForm } from "../stepQuestionForm";
+import { StepQuestionForm } from "@/components/stepQuestionForm";
 import { useEffect } from "react";
 
 type MainScreenProps = {

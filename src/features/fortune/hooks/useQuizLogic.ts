@@ -1,12 +1,13 @@
 "use client";
 
+import { AnimalType } from "../../../config";
 import { questions } from "../types/questions";
 import { useCallback, useMemo, useState } from "react";
 
 type QuizResult = {
   success: boolean;
   resultUrl?: string;
-  animalType?: string;
+  animalType?: AnimalType;
   error?: string;
 };
 

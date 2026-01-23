@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { MainScreen } from "./components/mainScreen";
-import { NicknameModal } from "./components/nicknameModal";
-import { ResultModal } from "./components/resultModal";
-import { useAnswers } from "./hooks/useAnswers";
-import { useFortuneLogic } from "./hooks/useFortuneLogic";
-import { useNicknameModal } from "./hooks/useNicknameModal";
+import { MainScreen } from "@/components/mainScreen";
+import { NicknameModal } from "@/components/nicknameModal";
+import { ResultModal } from "@/components/resultModal";
+import { useAnswers } from "@/features/fortune/hooks/useAnswers";
+import { useFortuneLogic } from "@/features/fortune/hooks/useFortuneLogic";
+import { useNicknameModal } from "@/features/fortune/hooks/useNicknameModal";
 
 export default function Home() {
   const { nickname, setNickname, showNicknameModal, closeNicknameModal } =

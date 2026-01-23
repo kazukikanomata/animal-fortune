@@ -1,5 +1,5 @@
-import { AnimalType, ANIMAL_TYPE_MAP } from "@/app/config";
-import { FortuneResult } from "@/app/hooks/useFortuneLogic";
+import { AnimalType, ANIMAL_TYPE_MAP } from "@/features/fortune/constants/animal-types";
+import { FortuneResult } from "@/features/fortune/hooks/useFortuneLogic";
 import Image from "next/image";
 
 const UNKNOWN_TYPE_TEXT = "不明なタイプ";

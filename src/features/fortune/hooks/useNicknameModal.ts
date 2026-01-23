@@ -1,4 +1,4 @@
-import { showDaisyToast } from "../components/toast";
+import { showDaisyToast } from "@/components/toast";
 import { useState } from "react";
 
 export const useNicknameModal = () => {

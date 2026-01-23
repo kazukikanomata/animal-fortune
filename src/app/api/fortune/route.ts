@@ -1,4 +1,4 @@
-import { GAS_API_URL } from "@/app/config";
+import { GAS_API_URL } from "@/config";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {

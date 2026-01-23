@@ -1,4 +1,4 @@
-import { Question } from "@/app/types/questions";
+import { Question } from "@/features/fortune/types/questions";
 import { useState, useEffect, useCallback } from "react";
 
 type StepQuestionFormProps = {
@@ -8,6 +8,9 @@ type StepQuestionFormProps = {
   onComplete: () => void;
   resetTrigger?: number;
 };
+
+const TRANSITION_DURATION_MS = 300;
+const KEYBOARD_TRANSITION_DURATION_MS = 150;
 
 export const StepQuestionForm = ({
   questions,
@@ -35,7 +38,7 @@ export const StepQuestionForm = ({
         setCurrentStep((prev) => prev + 1);
       }
       setIsTransitioning(false);
-    }, 300);
+    }, TRANSITION_DURATION_MS);
   };
 
   const goToPrevious = useCallback(() => {
@@ -44,7 +47,7 @@ export const StepQuestionForm = ({
       setTimeout(() => {
         setCurrentStep((prev) => prev - 1);
         setIsTransitioning(false);
-      }, 150);
+      }, KEYBOARD_TRANSITION_DURATION_MS);
     }
   }, [currentStep]);
 
@@ -55,7 +58,7 @@ export const StepQuestionForm = ({
       setTimeout(() => {
         setCurrentStep((prev) => prev + 1);
         setIsTransitioning(false);
-      }, 150);
+      }, KEYBOARD_TRANSITION_DURATION_MS);
     }
   }, [answers, currentStep, questions]);
 
